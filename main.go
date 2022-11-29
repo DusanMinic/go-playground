@@ -7,8 +7,6 @@ import (
 	"net/http"
 )
 
-// ACCEPT INTERFACE, RETURN STRUCT
-
 func main() {
 	db := "postgres"
 

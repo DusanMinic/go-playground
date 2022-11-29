@@ -6,8 +6,16 @@ import (
 	"net/http"
 )
 
-type Controller interface {
-	CreatePayment() func(w http.ResponseWriter, r *http.Request)
+type PaymentService interface {
+	CreatePayment(ctx context.Context) (*Payment, error)
+}
+
+type User struct {
+	Email string `json:"email"`
+}
+
+type UserService interface {
+	GetUser(ctx context.Context, email string) (User, error)
 }
 
 type controller struct {
@@ -15,7 +23,7 @@ type controller struct {
 	userService    UserService
 }
 
-func NewController(paymentService PaymentService, userService UserService) Controller {
+func NewController(paymentService PaymentService, userService UserService) *controller {
 	return &controller{
 		paymentService: paymentService,
 		userService:    userService,

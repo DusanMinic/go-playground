@@ -5,15 +5,11 @@ import (
 	"fmt"
 )
 
-type PaymentStore interface {
-	CreatePayment(ctx context.Context)
-}
-
 type PaymentDBStore struct {
 	db string
 }
 
-func NewPaymentStore(db string) PaymentStore {
+func NewPaymentStore(db string) *PaymentDBStore {
 	return &PaymentDBStore{db: db}
 }
 

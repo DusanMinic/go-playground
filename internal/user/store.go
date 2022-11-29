@@ -5,15 +5,11 @@ import (
 	"fmt"
 )
 
-type UserStore interface {
-	FindUserById(ctx context.Context, userId string) (User, error)
-}
-
 type UserDBStore struct {
 	db string
 }
 
-func NewUserStore(db string) UserStore {
+func NewUserStore(db string) *UserDBStore {
 	return &UserDBStore{db: db}
 }
 
