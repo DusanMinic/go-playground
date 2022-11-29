@@ -15,7 +15,7 @@ type User struct {
 }
 
 type UserService interface {
-	GetUser(ctx context.Context, email string) (User, error)
+	GetUser(ctx context.Context, email string) (*User, error)
 }
 
 type controller struct {
